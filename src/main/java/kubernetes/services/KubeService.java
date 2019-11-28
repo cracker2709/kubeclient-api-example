@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @Log4j2
@@ -60,12 +61,10 @@ public class KubeService {
      * @return
      */
     public NameSpaceItem getNameSpaceItem(String namespace) {
-        List<Pod> pods = getPodsDetailsForNameSpace(namespace);
-        List<PodItem> podItems = new ArrayList<>();
+        // remove index & activemq named pods
+        List<Pod> pods = getPodsDetailsForNameSpace(namespace).stream().filter(x -> (!x.getMetadata().getName().startsWith("index") && !x.getMetadata().getName().contains("activemq"))).collect(Collectors.toList());        List<PodItem> podItems = new ArrayList<>();
         for (Pod pod : pods) {
-            if(!pod.getMetadata().getName().startsWith("index") && !pod.getMetadata().getName().contains("activemq")) {
-                podItems.add(PodItem.builder().name(pod.getMetadata().getName()).image(pod.getMetadata().getLabels().get("app.kubernetes.io/name")).version(pod.getMetadata().getLabels().get("dockertag")).build());
-            }
+            podItems.add(PodItem.builder().name(pod.getMetadata().getName()).image(pod.getMetadata().getLabels().get("app.kubernetes.io/name")).version(pod.getMetadata().getLabels().get("dockertag")).build());
         }
         return NameSpaceItem.builder().name(namespace).podItems(podItems).build();
     }
