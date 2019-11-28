@@ -1,5 +1,6 @@
 # kubeclient-api-example
 A RestFul service interacting with Kubernetes APIS
+Use of https://quarkus.io/guides/kubernetes-client
 
 - Requirements
 JDK 11
