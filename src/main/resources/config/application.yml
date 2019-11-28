@@ -1,0 +1,15 @@
+server:
+  port: 9142
+
+spring:
+  profiles:
+    include: swagger
+  main:
+    allow-bean-definition-overriding: true
+
+
+quarkus:
+  kubernetes-client:
+    trust-certs: false
+    namespace: default
+    master: http://localhost:8080
