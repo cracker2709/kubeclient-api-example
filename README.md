@@ -9,7 +9,10 @@ Maven 3+
 An available kubernetes cluster
 Authentication done with proxy
 
-  `$ kubectl proxy --port=8080 &` 
+  `$ kubectl proxy --port=8080 &`
+  
+or with custom service account with appropriate cluster role and cluster
+role bindings
 
 - Launch Project
 

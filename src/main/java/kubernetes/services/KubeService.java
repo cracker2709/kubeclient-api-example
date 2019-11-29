@@ -22,16 +22,22 @@ import java.util.stream.Collectors;
 @Log4j2
 public class KubeService {
 
-    @Value("${quarkus.kubernetes-client.master}")
-    private String master;
-
     private Config config;
     private KubernetesClient kubernetesClient;
+
+    private static final String INDEX = "index";
+
+    private static final String ACTIVE_MQ = "activemq";
+
+    private static final String KUBERNETES_IMAGE_NAME = "app.kubernetes.io/name";
+
+    private static final String DOCKERTAG = "dockertag";
 
     @PostConstruct
     public void init(){
         // init code goes here
-        config = new ConfigBuilder().withMasterUrl(master).build();
+        // This will try local kube config first, then serviceaccount if exists
+        config = Config.autoConfigure(null);
         kubernetesClient = new DefaultKubernetesClient(config);
     }
 
@@ -62,9 +68,10 @@ public class KubeService {
      */
     public NameSpaceItem getNameSpaceItem(String namespace) {
         // remove index & activemq named pods
-        List<Pod> pods = getPodsDetailsForNameSpace(namespace).stream().filter(x -> (!x.getMetadata().getName().startsWith("index") && !x.getMetadata().getName().contains("activemq"))).collect(Collectors.toList());        List<PodItem> podItems = new ArrayList<>();
+        List<Pod> pods = getPodsDetailsForNameSpace(namespace).stream().filter(x -> (!x.getMetadata().getName().startsWith(INDEX) && !x.getMetadata().getName().contains(ACTIVE_MQ))).collect(Collectors.toList());
+        List<PodItem> podItems = new ArrayList<>();
         for (Pod pod : pods) {
-            podItems.add(PodItem.builder().name(pod.getMetadata().getName()).image(pod.getMetadata().getLabels().get("app.kubernetes.io/name")).version(pod.getMetadata().getLabels().get("dockertag")).build());
+            podItems.add(PodItem.builder().name(pod.getMetadata().getName()).image(pod.getMetadata().getLabels().get(KUBERNETES_IMAGE_NAME)).version(pod.getMetadata().getLabels().get(DOCKERTAG)).build());
         }
         return NameSpaceItem.builder().name(namespace).podItems(podItems).build();
     }

@@ -12,4 +12,3 @@ quarkus:
   kubernetes-client:
     trust-certs: false
     namespace: default
-    master: http://localhost:8080
