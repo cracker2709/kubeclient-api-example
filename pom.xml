@@ -31,11 +31,6 @@
 
     <dependencies>
         <dependency>
-             <groupId>org.apache.logging.log4j</groupId>
-             <artifactId>log4j-api</artifactId>
-             <version>2.3</version>
-         </dependency>     
-        <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-kubernetes-client</artifactId>
             <version>0.22.0</version>
@@ -162,10 +157,8 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>   
+            </plugin>
         </plugins>
     </build>
 
 </project>
-
-
