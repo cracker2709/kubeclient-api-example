@@ -13,11 +13,10 @@ import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 
-
 @Configuration
 @EnableSwagger2
 @ComponentScan(basePackages = {"kubernetes.web"})
-public class SwaggerConfig  {
+public class SwaggerConfig {
     @Bean
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2).select()
@@ -26,6 +25,7 @@ public class SwaggerConfig  {
                 .paths(PathSelectors.regex("/.*"))
                 .build().apiInfo(apiEndPointsInfo());
     }
+
     private ApiInfo apiEndPointsInfo() {
         return new ApiInfoBuilder().title("Kubernetes Client REST API")
                 .description("Query kubernetes tool")

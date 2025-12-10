@@ -9,13 +9,13 @@ import org.springframework.context.annotation.ComponentScan;
 
 @Log4j2
 @SpringBootApplication
-@ComponentScan(basePackages = { "io.kubernetes.client.apis", "kubernetes.client", "kubernetes.config", "kubernetes.services", "kubernetes.web"})
+@ComponentScan(basePackages = {"io.kubernetes.client.apis", "kubernetes.client", "kubernetes.config", "kubernetes.services", "kubernetes.web"})
 @EnableAutoConfiguration(exclude = {
-		org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration.class
+        org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration.class
 })
 public class KubeApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(KubeApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(KubeApplication.class, args);
+    }
 }
