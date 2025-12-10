@@ -1,0 +1,79 @@
+<configuration>
+    <include resource="logback-properties.xml"/>
+    <!-- always a good activate OnConsoleStatusListener -->
+    <statusListener class="ch.qos.logback.core.status.OnConsoleStatusListener"/>
+    <appender name="DATADOG_JSON" class="ch.qos.logback.core.ConsoleAppender">
+        <filter class="ch.qos.logback.core.filter.EvaluatorFilter">
+            <evaluator>
+                <!--                Filter vault token renewing logs -->
+                <expression>
+                    if (level == INFO) {
+                    if (logger.equals("org.springframework.vault.authentication.ReactiveLifecycleAwareSessionManager"))
+                    return true;
+                    if (logger.contains("org.apache.kafka"))
+                    return true;
+                    }
+                    return false;
+                </expression>
+            </evaluator>
+            <OnMismatch>NEUTRAL</OnMismatch>
+            <OnMatch>DENY</OnMatch>
+        </filter>
+        <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
+            <providers>
+                <timestamp>
+                    <fieldName>timestamp</fieldName>
+                    <timeZone>UTC</timeZone>
+                </timestamp>
+                <pattern>
+                    <!-- Reference list: http://logback.qos.ch/apidocs/src-html/ch/qos/logback/classic/PatternLayout.html#line.39 -->
+                    <omitEmptyFields>true</omitEmptyFields>
+                    <pattern>
+                        {
+                        "level": "%level",
+                        "message": "%message",
+                        "logger": "%logger",
+                        "thread": "%thread",
+                        "class": "%class",
+                        "method": "%method",
+                        "line": "%line",
+                        "hostname": "${HOSTNAME}",
+                        }
+                    </pattern>
+                </pattern>
+                <stackTrace>
+                    <fieldName>exception</fieldName>
+                    <throwableConverter class="net.logstash.logback.stacktrace.ShortenedThrowableConverter">
+                        <maxDepthPerThrowable>30</maxDepthPerThrowable>
+                        <maxLength>1024</maxLength>
+                        <rootCauseFirst>true</rootCauseFirst>
+                    </throwableConverter>
+                </stackTrace>
+            </providers>
+        </encoder>
+    </appender>
+    <!--    Appender that undertakes logs to be display in a compact form into console during local dev -->
+    <appender name="CONSOLE_LOCAL" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>
+                <pattern>
+                    [%date{HH:mm:ss.SSS}] [%level] %message %n
+                </pattern>
+            </pattern>
+        </encoder>
+    </appender>
+
+    <!--    Check if env. is a docker image-->
+    <if condition='property("LOG_OUT").equals("JSON")'>
+        <then>
+            <root level="INFO">
+                <appender-ref ref="DATADOG_JSON"/>
+            </root>
+        </then>
+        <else>
+            <root level="INFO">
+                <appender-ref ref="CONSOLE_LOCAL"/>
+            </root>
+        </else>
+    </if>
+</configuration>
