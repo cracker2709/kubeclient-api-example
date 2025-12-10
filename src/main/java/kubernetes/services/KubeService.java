@@ -34,7 +34,7 @@ public class KubeService {
     private static final String DOCKERTAG = "dockertag";
 
     @PostConstruct
-    public void init(){
+    public void init() {
         // init code goes here
         // This will try local kube config first, then serviceaccount if exists
         config = Config.autoConfigure(null);
@@ -44,6 +44,7 @@ public class KubeService {
 
     /**
      * List All details of namespaces
+     *
      * @return
      */
     public List<Namespace> getNameSpaces() {
@@ -53,6 +54,7 @@ public class KubeService {
 
     /**
      * List all pods details for a given namespace
+     *
      * @param namespace
      * @return
      */
@@ -63,6 +65,7 @@ public class KubeService {
 
     /**
      * Get Infos of pods in specified namespace
+     *
      * @param namespace
      * @return
      */
@@ -75,7 +78,6 @@ public class KubeService {
         }
         return NameSpaceItem.builder().name(namespace).podItems(podItems).build();
     }
-
 
 
 }
