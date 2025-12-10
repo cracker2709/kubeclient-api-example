@@ -4,22 +4,24 @@ package kubernetes.services;
 import io.fabric8.kubernetes.api.model.Namespace;
 import io.fabric8.kubernetes.api.model.Pod;
 import io.fabric8.kubernetes.client.Config;
-import io.fabric8.kubernetes.client.ConfigBuilder;
 import io.fabric8.kubernetes.client.DefaultKubernetesClient;
 import io.fabric8.kubernetes.client.KubernetesClient;
 import kubernetes.beans.NameSpaceItem;
 import kubernetes.beans.PodItem;
-import lombok.extern.log4j.Log4j2;
-import org.springframework.beans.factory.annotation.Value;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-@Log4j2
+@Slf4j
+
 public class KubeService {
 
     private Config config;
@@ -36,8 +38,14 @@ public class KubeService {
     @PostConstruct
     public void init() {
         // init code goes here
-        // This will try local kube config first, then serviceaccount if exists
         config = Config.autoConfigure(null);
+        if (isInCluster()) {
+            log.info("Using in-cluster service account");
+        } else if (isLocalKubeconfig()) {
+            log.info("Using local kubeconfig");
+        } else {
+            log.info("Using environment/system properties for Kubernetes config");
+        }
         kubernetesClient = new DefaultKubernetesClient(config);
     }
 
@@ -78,6 +86,20 @@ public class KubeService {
         }
         return NameSpaceItem.builder().name(namespace).podItems(podItems).build();
     }
+
+    private boolean isInCluster() {
+        return System.getenv("KUBERNETES_SERVICE_HOST") != null
+                && Files.exists(Paths.get("/var/run/secrets/kubernetes.io/serviceaccount/token"));
+    }
+
+    private boolean isLocalKubeconfig() {
+        String kubeconfigEnv = System.getenv("KUBECONFIG");
+        Path kubeconfigPath = kubeconfigEnv != null
+                ? Paths.get(kubeconfigEnv)
+                : Paths.get(System.getProperty("user.home"), ".kube", "config");
+        return Files.exists(kubeconfigPath);
+    }
+
 
 
 }

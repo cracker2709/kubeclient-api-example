@@ -1,5 +1,31 @@
+# Management for admin endpoints (Spring actuator)
+management:
+  server:
+    port: 8081
+    address: 0.0.0.0
+    base-path: /
+  endpoint:
+    health:
+      group:
+        readiness:
+          include: ping
+          show-details: always
+        liveness:
+          include: ping
+          show-details: always
+      show-components: always
+      show-details: always
+  endpoints:
+    web:
+      base-path: / # change the base path from "/actuator/" to "/"
+    exposure:
+      include: "*"
+  health:
+    binders:
+      enabled: false
+
 server:
-  port: 9142
+  port: 8080
 
 spring:
   profiles:

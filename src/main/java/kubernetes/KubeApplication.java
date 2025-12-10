@@ -1,13 +1,12 @@
 package kubernetes;
 
-import lombok.extern.log4j.Log4j2;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.ComponentScan;
 
-@Log4j2
+@Slf4j
 @SpringBootApplication
 @ComponentScan(basePackages = {"io.kubernetes.client.apis", "kubernetes.client", "kubernetes.config", "kubernetes.services", "kubernetes.web"})
 @EnableAutoConfiguration(exclude = {
