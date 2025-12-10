@@ -5,8 +5,7 @@ on:
     branches:
       - main
 
-permissions:
-  contents: write  # ✅ allows creating tags and releases
+permissions: write-all
 
 jobs:
   release:
