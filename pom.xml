@@ -10,8 +10,8 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>kubernetes</groupId>
-    <artifactId>api-example</artifactId>
-    <version>1.0.0</version>
+    <artifactId>kube-api</artifactId>
+    <version>1.0.1-SNAPSHOT</version>
 
     <properties>
         <maven-installer-plugin.version>2.5.2</maven-installer-plugin.version>
@@ -157,6 +157,13 @@
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <configuration>
+                    <skip>true</skip> <!-- Do not upload artifact to maven as it is not a library -->
+                </configuration>
             </plugin>
         </plugins>
     </build>
