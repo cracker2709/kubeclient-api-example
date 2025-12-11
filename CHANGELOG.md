@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/cracker2709/kubeclient-api-example/compare/v1.2.3...v1.3.0) (2025-12-11)
+
+
+### Features
+
+* add kind cluster helm deployment of this application ([9b7c50f](https://github.com/cracker2709/kubeclient-api-example/commit/9b7c50fac4fc2ddc4ae99f9086e488f857b13403))
+
 ## [1.2.3](https://github.com/cracker2709/kubeclient-api-example/compare/v1.2.2...v1.2.3) (2025-12-11)
 
 
