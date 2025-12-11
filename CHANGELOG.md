@@ -1,3 +1,10 @@
+## [1.2.3](https://github.com/cracker2709/kubeclient-api-example/compare/v1.2.2...v1.2.3) (2025-12-11)
+
+
+### Bug Fixes
+
+* restore GH_PAT ([fda50dc](https://github.com/cracker2709/kubeclient-api-example/commit/fda50dcb9cd6b1ddba0f9780682e4c093f6094c8))
+
 ## [1.2.2](https://github.com/cracker2709/kubeclient-api-example/compare/v1.2.1...v1.2.2) (2025-12-11)
 
 
