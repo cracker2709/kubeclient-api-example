@@ -1,3 +1,10 @@
+## [1.3.1](https://github.com/cracker2709/kubeclient-api-example/compare/v1.3.0...v1.3.1) (2025-12-11)
+
+
+### Bug Fixes
+
+* security config order ([56419cd](https://github.com/cracker2709/kubeclient-api-example/commit/56419cdd73326156995de3ee058230e86b481753))
+
 # [1.3.0](https://github.com/cracker2709/kubeclient-api-example/compare/v1.2.3...v1.3.0) (2025-12-11)
 
 
