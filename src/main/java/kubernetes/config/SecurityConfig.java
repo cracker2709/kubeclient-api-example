@@ -24,6 +24,7 @@ public class SecurityConfig {
                                 "/swagger-ui/**",
                                 "/swagger-ui.html"
                         ).permitAll()
+                        .requestMatchers("/health").permitAll()
                         .requestMatchers("/api/v1/**").permitAll()
                         .requestMatchers("/api/**").denyAll()
                         .anyRequest().denyAll()
