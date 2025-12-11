@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/cracker2709/kubeclient-api-example/compare/v1.2.0...v1.2.1) (2025-12-11)
+
+
+### Bug Fixes
+
+* how to trigger the release ([f11b69e](https://github.com/cracker2709/kubeclient-api-example/commit/f11b69ecfab03d063eb096b9c6b9e82584352391))
+
 # [1.2.0](https://github.com/cracker2709/kubeclient-api-example/compare/v1.1.0...v1.2.0) (2025-12-11)
 
 
