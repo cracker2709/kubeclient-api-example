@@ -2,6 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: {{ include "kubeapi.fullname" . }}
+  namespace: {{ .Values.namespace }}
   labels:
     {{- include "kubeapi.labels" . | nindent 4 }}
 spec:
@@ -11,9 +12,12 @@ spec:
       targetPort: {{ .Values.service.port }}
       protocol: TCP
       name: http
+      nodePort: {{ .Values.service.nodePort | default nil }}
     - port: {{ .Values.service.admin.port }}
       targetPort: {{ .Values.service.admin.port }}
       protocol: TCP
       name: http-admin
+      nodePort: {{ .Values.service.admin.nodePort | default nil }}
+
   selector:
     {{- include "kubeapi.selectorLabels" . | nindent 4 }}

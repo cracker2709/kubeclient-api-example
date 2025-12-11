@@ -1,15 +1,11 @@
 apiVersion: rbac.authorization.k8s.io/v1
-kind: Role
+kind: ClusterRole
 metadata:
-  name: sa-reader
-  namespace: default
+  name: sa-reader-role
 rules:
-  - apiGroups:
-      - ""
-    resources:
-      - pods
-      - namespaces
-    verbs:
-      - get
-      - list
-      - watch
+  - apiGroups: [""]
+    resources: ["namespaces"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: [""]
+    resources: ["pods"]
+    verbs: ["get", "list", "watch"]

@@ -1,17 +1,18 @@
 # Default values for kubeapi.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
-
+name: kubeclient
 # This will set the replicaset count more information can be found here: https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/
 replicaCount: 2
 
+namespace: kubeclient
 # This sets the container image more information can be found here: https://kubernetes.io/docs/concepts/containers/images/
 image:
   repository: docker.io/cracker2709/kubeclient-api
   # This sets the pull policy for images.
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: ""
+  tag: "1.3.2"
 
 # This is for the secrets for pulling an image from a private repository more information can be found here: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
 imagePullSecrets: []
@@ -55,11 +56,10 @@ service:
   type: NodePort
   # This sets the ports more information can be found here: https://kubernetes.io/docs/concepts/services-networking/service/#field-spec-ports
   port: 8080
+  nodePort: 30000
   admin:
     port: 8081
-  nodePort:
-    http: 30080
-    http-admin: 30082
+    nodePort: 31000
 
 # This block is for setting up the ingress for more information can be found here: https://kubernetes.io/docs/concepts/services-networking/ingress/
 ingress:
