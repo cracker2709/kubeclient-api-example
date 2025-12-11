@@ -1,15 +1,14 @@
 name: Java CI
 
 on:
-  workflow_run:
-    workflows: ["semantic-release"]
-    types:
-      - completed
+  release:
+    types: [ published ]
 
 permissions: write-all
 
 jobs:
   build:
+
     runs-on: ubuntu-latest
 
     steps:
