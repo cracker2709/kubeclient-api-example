@@ -34,6 +34,7 @@ Create chart name and version as used by the chart label.
 Common labels
 */}}
 {{- define "kubeapi.labels" -}}
+app.kubeclient.version: {{ .Values.image.tag | quote }}
 helm.sh/chart: {{ include "kubeapi.chart" . }}
 {{ include "kubeapi.selectorLabels" . }}
 {{- if .Chart.AppVersion }}

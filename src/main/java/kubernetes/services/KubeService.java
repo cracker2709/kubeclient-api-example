@@ -33,7 +33,7 @@ public class KubeService {
 
     private static final String KUBERNETES_IMAGE_NAME = "app.kubernetes.io/name";
 
-    private static final String DOCKERTAG = "dockertag";
+    private static final String APP_KUBECLIENT_VERSION = "app.kubeclient.version";
 
     @PostConstruct
     public void init() {
@@ -82,7 +82,7 @@ public class KubeService {
         List<Pod> pods = getPodsDetailsForNameSpace(namespace).stream().filter(x -> (!x.getMetadata().getName().startsWith(INDEX) && !x.getMetadata().getName().contains(ACTIVE_MQ))).collect(Collectors.toList());
         List<PodItem> podItems = new ArrayList<>();
         for (Pod pod : pods) {
-            podItems.add(PodItem.builder().name(pod.getMetadata().getName()).image(pod.getMetadata().getLabels().get(KUBERNETES_IMAGE_NAME)).version(pod.getMetadata().getLabels().get(DOCKERTAG)).build());
+            podItems.add(PodItem.builder().name(pod.getMetadata().getName()).image(pod.getMetadata().getLabels().get(KUBERNETES_IMAGE_NAME)).version(pod.getMetadata().getLabels().get(APP_KUBECLIENT_VERSION)).build());
         }
         return NameSpaceItem.builder().name(namespace).podItems(podItems).build();
     }

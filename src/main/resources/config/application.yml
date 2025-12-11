@@ -37,4 +37,4 @@ spring:
 quarkus:
   kubernetes-client:
     trust-certs: false
-    namespace: default
+    namespace: kubeclient
