@@ -1,3 +1,10 @@
+## [1.3.2](https://github.com/cracker2709/kubeclient-api-example/compare/v1.3.1...v1.3.2) (2025-12-11)
+
+
+### Bug Fixes
+
+* permissions issues on service account ([15fe462](https://github.com/cracker2709/kubeclient-api-example/commit/15fe46208e43dba4f66b438b0dc7132c697280ff))
+
 ## [1.3.1](https://github.com/cracker2709/kubeclient-api-example/compare/v1.3.0...v1.3.1) (2025-12-11)
 
 
