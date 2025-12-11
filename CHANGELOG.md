@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/cracker2709/kubeclient-api-example/compare/v1.1.0...v1.2.0) (2025-12-11)
+
+
+### Features
+
+* upgrade spring boot version to 3.2.0 ([61cb314](https://github.com/cracker2709/kubeclient-api-example/commit/61cb31478de9c46c78ee4f3cf40678dac22ebce6))
+
 # [1.1.0](https://github.com/cracker2709/kubeclient-api-example/compare/v1.0.0...v1.1.0) (2025-12-10)
 
 
