@@ -1,8 +1,12 @@
 name: Java CI
 
 on:
-  release:
-    types: [ published ]
+  workflow_run:
+    workflows: ["semantic-release"]
+    types:
+      - completed
+
+permissions: write-all
 
 jobs:
   build:
@@ -22,7 +26,7 @@ jobs:
       uses: mr-smithers-excellent/docker-build-push@v4
 
       with:
-        image: cracker2709/kubeclient-api-example
+        image: cracker2709/kubeclient-api
         tag: ${{ github.ref_name }}
         registry: docker.io
         username: ${{ secrets.DOCKER_USERNAME }}
