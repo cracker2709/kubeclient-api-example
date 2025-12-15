@@ -62,7 +62,7 @@ docker build -t kubeclient-api .
 To deploy the application into the kind cluster with appropriate service account and roles bindings
 
 ```bash
-helm install kubeclient-api ./kind/resources/kubeapi/ --create-namespace [--set image.tag=<version>]
+helm install kubeclient-api ./kind/resources/kubeapi/ --create-namespace --namespace kubeclient # --set image.tag=<version> to set specific image tag
 ```
 
 When application is launched, you should see in logs use of service account
