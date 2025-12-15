@@ -27,6 +27,9 @@ public class SecurityConfig {
                                 "/v3/api-docs/**",
                                 "/v3/api-docs/swagger-config"
                         ).permitAll()
+                        .requestMatchers("/api/v1/**").permitAll()
+                        .requestMatchers("/health").permitAll()
+                        .requestMatchers("/api/**").denyAll()
                         .anyRequest().authenticated()
                 );
 
