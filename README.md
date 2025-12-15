@@ -11,11 +11,11 @@ An available kubernetes cluster
 Locally you can use kind
 Installation instructions https://kind.sigs.k8s.io/docs/user/quick-start/
 
-```shell
+```bash
 $ kind create cluster --config=kind/kind-config.yaml
 ```
 or use authentication through proxy
-```shell
+```bash
 $ kubectl proxy --port=8080 &
 ```  
 or with custom service account with appropriate cluster role and cluster
@@ -23,7 +23,9 @@ role bindings
 
 - Launch Project
 
-  `$ mvn spring-boot:run`
+```bash
+$ mvn spring-boot:run
+```
 
 When launching locally, check the use of local cluster config.
 ```logs
@@ -51,9 +53,15 @@ http://localhost:8080/swagger-ui/index.html
 
 
 ### Kind deployment
+
+To build image locally
+```bash
+docker build -t kubeclient-api .
+```
+
 To deploy the application into the kind cluster with appropriate service account and roles bindings
 
-```shell
+```bash
 helm install kubeclient-api ./kind/resources/kubeapi/ [--set image.tag=<version>]
 ```
 
@@ -82,7 +90,7 @@ When application is launched, you should see in logs use of service account
 This will deploy the application with a NodePort service type. You can access the application using the Ip of the node.
 To get IP of the node
 
-```shell
+```bash
 kubectl get nodes kind-control-plane -o wide | grep -v INT | awk '{print $6}'
 ```
 
@@ -91,6 +99,6 @@ http://<NODE_IP>:31000/swagger-ui/index.html
 
 To uninstall the application
 
-```shell
+```bash
 helm uninstall kubeclient-api
 ```
