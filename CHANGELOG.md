@@ -1,3 +1,10 @@
+## [1.3.4](https://github.com/cracker2709/kubeclient-api-example/compare/v1.3.3...v1.3.4) (2025-12-15)
+
+
+### Bug Fixes
+
+* security config issue for swagger-config path v2 ([ad77b53](https://github.com/cracker2709/kubeclient-api-example/commit/ad77b53798c26a4dfefb8e8ed42d65b361a5ad10))
+
 ## [1.3.3](https://github.com/cracker2709/kubeclient-api-example/compare/v1.3.2...v1.3.3) (2025-12-15)
 
 
