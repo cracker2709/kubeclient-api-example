@@ -1,3 +1,10 @@
+## [1.3.5](https://github.com/cracker2709/kubeclient-api-example/compare/v1.3.4...v1.3.5) (2025-12-15)
+
+
+### Bug Fixes
+
+* security config issue for healthcheck ([ccc894a](https://github.com/cracker2709/kubeclient-api-example/commit/ccc894aa4e9fa0c0fe83230c217678fd954c6d51))
+
 ## [1.3.4](https://github.com/cracker2709/kubeclient-api-example/compare/v1.3.3...v1.3.4) (2025-12-15)
 
 
