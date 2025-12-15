@@ -18,19 +18,19 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
+                .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(
                                 "/v3/api-docs/**",
                                 "/swagger-ui/**",
-                                "/swagger-ui.html"
+                                "/swagger-ui.html",
+                                "/v3/api-docs/swagger-config"
                         ).permitAll()
                         .requestMatchers("/api/v1/**").permitAll()
                         .requestMatchers("/health").permitAll()
                         .requestMatchers("/api/**").denyAll()
                         .anyRequest().denyAll()
-                )
-                .csrf(AbstractHttpConfigurer::disable);
-
+                );
         return http.build();
     }
 
