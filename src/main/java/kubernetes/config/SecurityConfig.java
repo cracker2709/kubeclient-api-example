@@ -16,23 +16,23 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                .csrf(AbstractHttpConfigurer::disable)
+                .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(
-                                "/v3/api-docs/**",
-                                "/swagger-ui/**",
                                 "/swagger-ui.html",
+                                "/swagger-ui/**",
+                                "/v3/api-docs",
+                                "/v3/api-docs/**",
                                 "/v3/api-docs/swagger-config"
                         ).permitAll()
-                        .requestMatchers("/api/v1/**").permitAll()
-                        .requestMatchers("/health").permitAll()
-                        .requestMatchers("/api/**").denyAll()
-                        .anyRequest().denyAll()
+                        .anyRequest().authenticated()
                 );
+
         return http.build();
     }
+
 
     @Bean
     public PasswordEncoder passwordEncoder() {
