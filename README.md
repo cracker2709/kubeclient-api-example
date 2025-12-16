@@ -93,9 +93,16 @@ To get IP of the node
 ```bash
 kubectl get nodes kind-control-plane -o wide | grep -v INT | awk '{print $6}'
 ```
+Or follow helm output to get the node IP
 
-Then use 31000 port to access the application
-http://<NODE_IP>:31000/swagger-ui/index.html
+```bash
+1. Get the application URL by running these commands:
+  export NODE_PORT=$(kubectl get --namespace kubeclient -o jsonpath="{.spec.ports[0].nodePort}" services kubeclient-api-kubeapi)
+  export NODE_IP=$(kubectl get nodes --namespace kubeclient -o jsonpath="{.items[0].status.addresses[0].address}")
+  echo http://$NODE_IP:$NODE_PORT
+```
+Then use 30000 port to access the application
+http://<NODE_IP>:30000/swagger-ui/index.html
 
 To uninstall the application
 
