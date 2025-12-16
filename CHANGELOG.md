@@ -1,3 +1,10 @@
+## [1.3.7](https://github.com/cracker2709/kubeclient-api-example/compare/v1.3.6...v1.3.7) (2025-12-16)
+
+
+### Bug Fixes
+
+* kubernetes issues ([d14681e](https://github.com/cracker2709/kubeclient-api-example/commit/d14681e35349c04d649e59beb3e076218301ed12))
+
 ## [1.3.6](https://github.com/cracker2709/kubeclient-api-example/compare/v1.3.5...v1.3.6) (2025-12-15)
 
 
