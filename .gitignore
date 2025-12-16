@@ -28,3 +28,4 @@ docker/data/mongo
 pom.xml.releaseBackup
 release.properties
 syntax: glob
+buildLocallly.bash
