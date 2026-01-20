@@ -1,0 +1,6 @@
+FROM python:3.13-slim
+WORKDIR /code
+COPY ./kube-api-pyp/requirements.txt /code/requirements.txt
+RUN python -m pip install pip && pip install --no-cache-dir --upgrade -r /code/requirements.txt
+COPY ./kube-api-pyp/app /code/app
+CMD ["fastapi", "run", "app/main.py", "--port", "80"]
