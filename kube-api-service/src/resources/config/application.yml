@@ -35,8 +35,8 @@ spring:
 
 springdoc:
   swagger-ui:
-    config-url: /v3/api-docs/swagger-config
-    url: /v3/api-docs
+    config-url: /v3/routers-docs/swagger-config
+    url: /v3/routers-docs
 
 
 quarkus:

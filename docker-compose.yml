@@ -2,6 +2,6 @@ version: '3.2'
 
 services:
   kubeapi:
-    image: cracker2709/kubeclient-api-example:latest
+    image: cracker2709/kubeclient-routers-example:latest
     container_name: kubeapi
     restart: always
