@@ -1,3 +1,10 @@
+## [1.4.2](https://github.com/cracker2709/kubeclient-api-example/compare/v1.4.1...v1.4.2) (2026-01-21)
+
+
+### Bug Fixes
+
+* maven deploy plugin ([9815800](https://github.com/cracker2709/kubeclient-api-example/commit/9815800a122df88eeff1a78f67c6567bfe83afe7))
+
 ## [1.4.1](https://github.com/cracker2709/kubeclient-api-example/compare/v1.4.0...v1.4.1) (2026-01-21)
 
 
