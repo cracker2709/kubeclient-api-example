@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/cracker2709/kubeclient-api-example/compare/v1.3.7...v1.4.0) (2026-01-21)
+
+
+### Features
+
+* add python module built with fastapi ([a57ed24](https://github.com/cracker2709/kubeclient-api-example/commit/a57ed2495c4a9aed9ae8ea3a5f5880fcf6d67efa))
+
 ## [1.3.7](https://github.com/cracker2709/kubeclient-api-example/compare/v1.3.6...v1.3.7) (2025-12-16)
 
 
