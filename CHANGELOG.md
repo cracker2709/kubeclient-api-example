@@ -1,3 +1,10 @@
+## [1.4.4](https://github.com/cracker2709/kubeclient-api-example/compare/v1.4.3...v1.4.4) (2026-01-21)
+
+
+### Bug Fixes
+
+* java swagger url due to abusive copy/paste ([812abf1](https://github.com/cracker2709/kubeclient-api-example/commit/812abf155b362660c2a6de6d22b1340e3fed6ac0))
+
 ## [1.4.3](https://github.com/cracker2709/kubeclient-api-example/compare/v1.4.2...v1.4.3) (2026-01-21)
 
 

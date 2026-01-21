@@ -6,7 +6,7 @@
     <parent>
         <groupId>kubernetes</groupId>
         <artifactId>kube-api-parent</artifactId>
-        <version>1.4.4-SNAPSHOT</version>
+        <version>1.4.4</version>
     </parent>
     <artifactId>kube-api-service</artifactId>
     <packaging>jar</packaging>
