@@ -1,3 +1,10 @@
+## [1.4.3](https://github.com/cracker2709/kubeclient-api-example/compare/v1.4.2...v1.4.3) (2026-01-21)
+
+
+### Bug Fixes
+
+* service module structure ([1b87c34](https://github.com/cracker2709/kubeclient-api-example/commit/1b87c341851224ca8349e4182f97331baacfbfad))
+
 ## [1.4.2](https://github.com/cracker2709/kubeclient-api-example/compare/v1.4.1...v1.4.2) (2026-01-21)
 
 
