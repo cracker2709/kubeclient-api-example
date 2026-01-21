@@ -1,3 +1,10 @@
+## [1.4.1](https://github.com/cracker2709/kubeclient-api-example/compare/v1.4.0...v1.4.1) (2026-01-21)
+
+
+### Bug Fixes
+
+* maven dependencies ([fb4d4ae](https://github.com/cracker2709/kubeclient-api-example/commit/fb4d4ae725111802b31a2a8732f774c2d1aa8495))
+
 # [1.4.0](https://github.com/cracker2709/kubeclient-api-example/compare/v1.3.7...v1.4.0) (2026-01-21)
 
 
